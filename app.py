@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from langchain.agents import initialize_agent, Tool
 from langchain.agents import AgentType
 #from langchain.chat_models import ChatOpenAI
-from langchain.prompts import MessagesPlaceholder#, PromptTemplate
+from langchain.prompts import MessagesPlaceholder, PromptTemplate
 from langchain.memory import ConversationSummaryBufferMemory
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.chains.summarize import load_summarize_chain
@@ -20,9 +20,8 @@ import json
 #import streamlit as st
 from langchain.schema import SystemMessage
 from fastapi import FastAPI
-from langchain_openai import ChatOpenAI
 from langchain_community.chat_models import ChatOpenAI
-from langchain.prompts import ChatPromptTemplate
+from langchain_openai import ChatOpenAI
 import openai
 
 load_dotenv()
@@ -93,7 +92,7 @@ def scrape_website(objective: str, url: str):
 
 def summary(objective, content):
     llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo-16k-0613",openai_api_key=openai_api_key)
-    
+
     text_splitter = RecursiveCharacterTextSplitter(
         separators=["\n\n", "\n"], chunk_size=10000, chunk_overlap=500)
     docs = text_splitter.create_documents([content])
@@ -205,6 +204,7 @@ class Query(BaseModel):
 @app.post("/")
 def researchAgent(query: Query):
     query = query.query
+    content_type = query.headers.get('Content-Type')
     content = agent({"input": query})
     actual_content = content['output']
     return actual_content
