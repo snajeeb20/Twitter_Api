@@ -10,3 +10,4 @@ uvicorn
 openai
 tiktoken
 langchain_community
+langchain_openai
