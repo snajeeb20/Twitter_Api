@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 
 
-from langchain import PromptTemplate
+#from langchain import PromptTemplate
 from langchain.agents import initialize_agent, Tool
 from langchain.agents import AgentType
 #from langchain.chat_models import ChatOpenAI
@@ -22,6 +22,7 @@ from langchain.schema import SystemMessage
 from fastapi import FastAPI
 from langchain_openai import ChatOpenAI
 from langchain_community.chat_models import ChatOpenAI
+from langchain.prompts import ChatPromptTemplate
 import openai
 
 load_dotenv()
