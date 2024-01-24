@@ -20,8 +20,8 @@ import json
 #import streamlit as st
 from langchain.schema import SystemMessage
 from fastapi import FastAPI
+from langchain_openai import ChatOpenAI
 from langchain_community.chat_models import ChatOpenAI
-#from langchain_openai import ChatOpenAI
 import openai
 
 load_dotenv()
