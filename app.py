@@ -27,7 +27,7 @@ import openai
 load_dotenv()
 brwoserless_api_key = os.getenv("BROWSERLESS_API_KEY")
 serper_api_key = os.getenv("SERP_API_LEY")
-openai_api_key = os.getenv("OPEN_API_KEY")
+sn_api_key = os.getenv("KEY")
 
 # 1. Tool for search
 
@@ -91,7 +91,7 @@ def scrape_website(objective: str, url: str):
 
 
 def summary(objective, content):
-    llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo-16k-0613",openai_api_key=openai_api_key)
+    llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo-16k-0613",sn_api_key=sn_api_key)
 
     text_splitter = RecursiveCharacterTextSplitter(
         separators=["\n\n", "\n"], chunk_size=10000, chunk_overlap=500)
@@ -164,7 +164,7 @@ agent_kwargs = {
     "system_message": system_message,
 }
 
-llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo-16k-0613",openai_api_key=openai_api_key)
+llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo-16k-0613",sn_api_key=sn_api_key)
 memory = ConversationSummaryBufferMemory(
     memory_key="memory", return_messages=True, llm=llm, max_token_limit=1000)
 
