@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 #from langchain import PromptTemplate
 from langchain.agents import initialize_agent, Tool
 from langchain.agents import AgentType
-#from langchain.chat_models import ChatOpenAI
+from langchain.chat_models import ChatOpenAI
 from langchain.prompts import MessagesPlaceholder, PromptTemplate
 from langchain.memory import ConversationSummaryBufferMemory
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -20,7 +20,7 @@ import json
 #import streamlit as st
 from langchain.schema import SystemMessage
 from fastapi import FastAPI
-from langchain_community.chat_models import ChatOpenAI
+#from langchain_community.chat_models import ChatOpenAI
 from langchain_openai import ChatOpenAI
 import openai
 
